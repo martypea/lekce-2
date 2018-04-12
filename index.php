@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php
+    $text = 'Nejlepší školení je od Programators';
+    $boolean = false;
+    $text1 = "Ahoj";
+    $text2 = "pane";
+    $cislo = 5;
+    $cislo += 5;
+    $pole1 = [2,".",[1,3.5,null],"barva"=>"cerna"];
+    $pole2 = ["name"=>"Martin","surname"=>"Pavlas"];
+    $pole3= ["zavodnici"=>["Eva","Adam","Jakub"],"poradi"=>[2,3,1]];
+    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -50,20 +61,30 @@
         </form>
       </div>
     </nav>
-
+<!--container-->
     <main role="main" class="container">
-
       <div class="starter-template">
         <h1>
-<?php
-  echo 'Centrální obrazovka všehomíra';
-
-?>
+          <?php
+          print_r($text);
+          echo '<br>';
+          var_dump($boolean);
+          ?>
         </h1>
+        <div>
+          <?php echo $text1." ".$text2;?>!<br>
+          <?php echo "Spravne cislo je ".$cislo;?><br>
+          <?php var_dump($pole1);?><br>
+          <?php echo $pole1[0];?><br>
+          <h3>
+            <?php echo $text1." ".$pole2["name"]." ".$pole2["surname"]." !";?><br>
+          </h3>
+        </div>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
-    </main><!-- /.container -->
+    </main>
+<!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
