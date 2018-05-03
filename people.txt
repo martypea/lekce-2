@@ -1,0 +1,5 @@
+Martin,male,good
+Jana,female,excellent
+Radim,male,superb
+Hana,female,great
+Katka,female,YES!

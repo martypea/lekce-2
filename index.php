@@ -2,350 +2,204 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="favicon.ico">
-
-  <title>Starter Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="starter-template.css" rel="stylesheet">
-
-  <!--ukol name-->
-  <?php 
-    session_start();
+  <?php require "templates.php"; ?>
+  <?php
+    $text = 'Nejlepší školení je od Programators';
+    $boolean = false;
+    $text1 = "Ahoj";
+    $text2 = "pane";
+    $cislo = 5;
+    $cislo += 5;
+    $pole1 = [2,".",[1,3.5,null],"barva"=>"cerna"];
+    $pole2 = ["name"=>"Martin","surname"=>"Pavlas"];
+    $pole3= ["zavodnici"=>["Eva","Adam","Jakub"],"poradi"=>[2,3,1]];
+  $max = sizeOf($pole3["zavodnici"]);
+    $projectName = "lekce-2";
+      $pageName = "Home";
+    $counter = 586;
+    $numbers = [0,1,1,2,3,5,8];
+  //ukol2
+  $a = 67;
+  $b = 6;
+  $area = $a * $b;
   
-    $projectName = "lekce-3";
-    $pageName = "Home";
-  
-    $number = 5;
-    $first = 1;
- 
-    $soucet = 0;
-    $soucin = 1;
-    $a = $first;
-    while ($a <= $number){
-      $soucet += $a;
-      $soucin *= $a;
-      $a++;
-    } 
+  //ukol3
+  $stranaA = 7;
+  $stranaB = 9;
+  $uhelBeta = 60;
+  $uhelAlfa = rad2deg (asin ( ($stranaA / $stranaB) * sin(deg2rad($uhelBeta))));
+  $stranaC = ($stranaA * cos(deg2rad($uhelBeta))) + ($stranaB * cos(deg2rad($uhelAlfa)));
+  $uhelGamma = 180 - ($uhelAlfa + $uhelBeta);
+  $obvod = $stranaA + $stranaB + $stranaC;
+  $obsah = 0.5 * ($stranaA * sin(deg2rad($uhelBeta))) * $stranaC; 
     ?>
 
-  <?php 
-    $pole = [
-            "čeština"=>3, 
-            "matematika"=>2, 
-            "dějepis"=>4, 
-            "zeměpis" =>1, 
-            "filosofie"=>2,
-            ]; 
-    ?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#"><?php echo $projectName." - ".$pageName; ?></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/lekce-2/index_old.php">Stará lekce</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
+  <?php navigation('Lekce2'); ?>
+  
+  
+  <!--container-->
   <main role="main" class="container">
-
     <div class="starter-template">
       <h1>
-<!--1. příklad-->
         <?php
-          $name = 'Martin';
-       
-          if ($name == 'Martin'){
-            echo "Nazdar $name";
-          }
-          else{
-            echo "Dobrý den $name";
-          }
-        echo '<br>';
-        
-        if (array_key_exists('accessed',$_SESSION)){
-          if (array_key_exists('name',$_POST) && $_POST['name']!=""){
-            echo "Čau ".$_POST['name'];
-          } else { echo "Musíš zadat jméno!";
-          }
-            
-          
-        } else {
-          echo "Tebe neznám";
-          $_SESSION['accessed']=null;
-        }      
-        ?>
+          print_r($text);
+          echo '<br>';
+          var_dump($boolean);
+          ?>
       </h1>
+      <div>
+        <?php echo $text1." ".$text2;?>!<br>
+        <?php echo "Spravne cislo je ".$cislo;?><br>
+        <?php var_dump($pole1);?><br>
+        <?php echo $pole1[0];?><br>
+        <h3>
+          <?php echo $text1." ".$pole2["name"]." ".$pole2["surname"]." !";?><br>
+        </h3>
+      </div>
       <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
     </div>
-<!--2. příklad-->
-    <div class="container">
-
+    <div>
       <table class="table">
-        <thead>
+        <thead class="thead-dark">
           <tr>
-            <th scope="col">Číslo</th>
-            <th scope="col">Součet</th>
-            <th scope="col">Součin</th>
+            <th scope="col"></th>
+            <th scope="col">Závodník</th>
+            <th scope="col">Pořadí</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <?= $number;?>
-            </td>
-            <td>
-              <?= $soucet;?>
-            </td>
-            <td>
-              <?= $soucin;?>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-<!--příklad pole-->
-    <div class="container">
-      <h5>
-        Známky:
-      </h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Předmět</th>
-            <th scope="col">Známka</th> 
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          foreach ($pole as $predmet => $znamka){
+          <?php 
+          for($i=0; $i < $max ; $i++ )
+          {
+          echo
+          '<tr>
+            <th>'.($i+1).'</th>
+            <td>'
+              .$pole3["zavodnici"][$i].
+            '</td>
+            <td>'
+              .$pole3["poradi"][$i].
+            '</td>
+          </tr>';
+          };
           ?>
-            <tr>
-            <td><?=$predmet?></td>
-            <td><?=$znamka?></td>
-            </tr>
-            <?php } ?>
         </tbody>
       </table>
     </div>
-
-<div class="container">
-     
-    <form action="/lekce-2/index.php" method="POST">
-      <input type="text" name="name">
-      <input type="submit" value="odeslat">
-    </form>
-</div>
-<!-- domaci ukol 1-->
+    <!--ukol2-->
     <div class="container">
-      <p><h2>
-      Úkol 1 - Fibonacciho posloupnost
-      </h2></p>
-      <table class="table">
-     <?php 
-      $an = 0;
-      $an1 = 1;
-      $an2 = $an + $an1;
-      $maxFibonacci = 200;
-     ?>
-      <tr><td><?=$an;?></td></tr>
-      <tr><td><?=$an1;?></td></tr>
-     <?php
-      while (($an + $an1) <= $maxFibonacci){
-        $an2 = $an + $an1;
-        $an = $an1;
-        $an1 = $an2;
-      ?>
-        <tr><td><?=$an2;?></td></tr>
-      <?php } ?>
-      </table>
+      <div class="row">
+        <div class="col-1">
+          <h5>Counter:</h5>
+        </div>
+        <div class="col">
+          <?php echo $counter; ?>
+        </div>
+      </div>
     </div>
- <!-- /.domaci ukol 1--> 
- <!-- .domaci ukol 2-->
-  <div class = "container">
-    <p><h2>
-      Úkol 2 - Pole studentů
-      </h2></p>
-    <?php
-    $students = ["jan",
-                 "peTr",
-                 "milOš",
-                 "hana",
-                 "jANa"];
-    ?>
-    <table class="table">
-        <thead>
-          <tr><th scope="col">Pořadí</th><th scope="col">Jméno</th> </tr>
+    <!--ukol3-->
+    <div class="container">
+      <p>
+        <h5>Numbers:</h5>
+        <?php var_dump ($numbers); ?>
+      </p>
+    </div>
+    <!--domaci ukol2-->
+    <div class="container">
+      <p>Obdelník o stranách <b>a:</b>
+        <?php echo $a;?>, <b>b:</b>
+        <?php echo $b;?> má obsah
+        <?php echo $area;?>
+      </p>
+    </div>
+    <!--domaci ukol3-->
+    <div class="container">
+      <p class="h3">Trojúhelník podle věty ssu</p>
+      <p class="h5">Vstupní parametry</p>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr class="row">
+            <th class="col-1" scope="col">strana a</th>
+            <th class="col-1" scope="col">strana b</th>
+            <th class="col-1" scope="col">uhel &beta;</th>
+          </tr>
         </thead>
         <tbody>
-          <?php
-          foreach ($students as $poradi => $name){
-          ?>  
-          <tr><td><?= ($poradi + 1).".";?></td><td><?= ucfirst(strtolower($name));?></td></tr>
-          <?php } ?>
+          <tr class="row">
+            <td class="col-1">
+              <?php echo round($stranaA,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($stranaB,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($uhelBeta,2); ?>
+            </td>
+          </tr>
         </tbody>
-    </table>
-  </div>  
-<!-- /.domaci ukol 2-->
-<!-- .domaci ukol 3-->
-  <div class = "container">
-    <p><h2>
-      Úkol 3 - Známky
-      </h2></p>
-    <?php
-    $grades = ["Jan"=>['matematika'=>2,'fyzika'=>2],
-               "Petr"=>['matematika'=>1,'fyzika'=>3],
-               "Miloš"=>['management'=>2,'angličtina'=>4, 'němčina'=>1],
-               "Hana"=>['čeština'=>4,'dějepis'=>1],
-               "Jana"=>['matematika'=>2,'fyzika'=>2]];
-    ?>
-    <table class="table">
-       <?php
-       foreach ($grades as $name => $gradesArray){
-       ?>
-          <thead>
-            <tr><th scope="col"><h3><?=$name;?></h3></th><th scope="col"></th></tr>
-          </thead>
-          <tbody>
-          <?php foreach ($gradesArray as $subject => $grade){
-            ?>
-          <tr><td scope="col"><?=$subject ;?></td><td scope="col"><?=$grade;?></td></tr>
-          <?php } ?>
+      </table>
+      <p class="h5">Vlastnosti trojúhelníku</p>
+      <table class="table">
+        <thead class="thead-light">
+          <tr class="row">
+            <th class="col-1" scope="col">strana a</th>
+            <th class="col-1" scope="col">strana b</th>
+            <th class="col-1" scope="col">strana c</th>
+            <th class="col-1" scope="col">uhel &alpha;</th>
+            <th class="col-1" scope="col">uhel &beta;</th>
+            <th class="col-1" scope="col">uhel &gamma;</th>
+            <th class="col-1" scope="col">obvod</th>
+            <th class="col-1" scope="col">obsah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row">
+            <td class="col-1">
+              <?php echo round($stranaA,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($stranaB,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($stranaC,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($uhelAlfa,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($uhelBeta,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($uhelGamma,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($obvod,2); ?>
+            </td>
+            <td class="col-1">
+              <?php echo round($obsah,2); ?>
+            </td>
+          </tr>
         </tbody>
-      <?php }?>
-    </table>
-  </div>  
-<!-- /.domaci ukol 3-->
-  
-<!-- .domaci ukol 4-->
-  <div class = "container">
-    <p><h2>
-      Úkol 4 - Násobilka
-      </h2></p>
-    <?php
-    $h = [1,2,3,4,5,6,7,8,9,10,11];
-    $v = [1,2,3,4,5,6,7,8,9];
-    ?>
-    <table class="table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <?php
-              foreach ($h as $hValue){
-              ?>
-              <th scope="col"><?=$hValue;?></th>
-              <?php } ?>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($v as $vValue){
-            ?>
-            <tr>
-              <th scope="col"><?= $vValue ?></th>
-            <?php foreach ($h as $hValue){
-            ?>
-              <td scope="col"><?= ($hValue * $vValue);?></td>
-            <?php }?>  
-            </tr>
-            <?php }?>
-          </tbody>
-    </table>
-  </div>  
-<!-- /.domaci ukol 4-->
-<!-- .domaci ukol 5-->
-    <div class = "container">
-      <p><h2>
-        Úkol 5 - No. of reloads
-      </h2></p>
-      <?php
-       if (array_key_exists('numberOfReloads',$_SESSION)){
-          $_SESSION['numberOfReloads'] ++;
-        } else {
-          $_SESSION['numberOfReloads']=1;
-        }
-        echo 'Počet zobrazení stránky: ';
-        echo $_SESSION['numberOfReloads'];
-      ?>
+      </table>
     </div>
-<!-- /.domaci ukol 5-->
-<!-- .domaci ukol 6-->
-    <div class = "container">
-      <p><h2>
-        Úkol 6
-      </h2></p>
-      <?php
-       if (!array_key_exists('visited',$_SESSION)){
-          echo "Jsi zde poprvé!";
-          $_SESSION['visited']=1;
-        } elseif ($_SESSION['visited']%2==0){
-         echo "Vítej zpět" ;
-         $_SESSION['visited']++; 
-        } elseif ($_SESSION['visited']%2==1){
-          echo 'Wellcome back!';
-          $_SESSION['visited']++;
-       }
-      ?>
-    </div>
-<!-- /.domaci ukol 6-->
-<!-- domaci ukol COOKIE-->
-<div class = "container">
-      <p><h2>
-        Úkol 7 -COOKIE
-      </h2></p>
-<div class='container'>
-  <form>
-  <div class="form-group">
-    <label for="exampleInputText1">Name</label>
-    <input type="text" class="form-control" id="exampleInputText1" aria-describedby="name" placeholder="Enter name" name="jmeno">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  <?php
-  
-  ?>
-</div>
-<!-- /domaci ukol COOKIE-->
-</main>
+  </main>
   <!-- /.container -->
 
   <!-- Bootstrap core JavaScript
