@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <?php newHeader('Lekce 4');?>
+    <?php newHeader('Lekce 4 - Domácí úkoly');?>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,12 +49,70 @@
       fwrite($pocitadlo,$pocet[0]);
       fwrite($pocitadlo,",");
       fwrite($pocitadlo,$pocet[1]);
-      fclose($pocitadlo);
-      var_dump($_SESSION);
-      
+      fclose($pocitadlo);     
       ?>
     </div>
 <!-- /.domaci ukol 2-->
+<!-- domaci ukol tezky-->
+    
+    <div class = "container">
+      <p><h2>
+        Úkol těžký
+      </h2></p>
+    
+  <form action="/lekce-2/lekce4-domaci-ukoly.php" method="POST">
+  <div class="form-group">
+    <label for="exampleInputText1">Name</label>
+    <input type="text" class="form-control" id="exampleInputText1" aria-describedby="name" placeholder="Enter name" name="nameLog">
+    </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+      <?php
+    
+    if (array_key_exists('nameLog',$_POST) && $_POST['nameLog']!=null){
+      echo "Čau ".$_POST['nameLog'].", tvoje jméno i s časem bylo zalogováno!";
+      $log = fopen ("log.txt","a");
+      if (file_get_contents("log.txt")!=''){fwrite($log,PHP_EOL);}
+      fwrite($log,$_POST['nameLog']);
+      fwrite($log,",");
+      fwrite($log,date('j.n.Y H:i:s'));
+      fclose($log);
+          } else { echo "Musíš zadat jméno!";
+          }   
+    ?>
+    <br/>
+    <br/>
+    <h5>
+      Seznam přístupů:
+    </h5>
+    <table class="table">
+      <thead>
+        <th scope="col-3">Jméno</th>
+        <th scope="col-3">Čas</th>
+      </thead>
+      <tbody>
+        <?php
+        $log = fopen ("log.txt","r");
+        while (!feof($log)){
+          $item = explode(",",fgets($log));
+          ?>
+          <tr>
+            <td scope="col-3">
+              <?=$item[0];?>
+            </td>
+            <td scope="col-3">
+              <?=$item[1];?>
+            </td>
+          </tr>
+          <?php }
+        fclose($log);
+        ?>
+      </tbody>
+    </table>
+   
+    </div>
+    
+    <!-- /domaci ukol tezky-->
       
     </main><!-- /.container -->
 
